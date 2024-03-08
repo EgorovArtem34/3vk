@@ -1,3 +1,9 @@
+import { GroupsPage } from "@/pages/GroupsPage/GroupsPage";
+
 export const App = () => {
-  return <div>123</div>;
+  return (
+    <>
+      <GroupsPage />
+    </>
+  );
 };

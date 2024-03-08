@@ -1,0 +1,101 @@
+{
+  "groupDB": {
+    "result": 1,
+    "data": [
+      {
+        "id": 1,
+        "name": "Семья",
+        "closed": false,
+        "avatar_color": "#00FF00",
+        "members_count": 5,
+        "friends": [
+          { "first_name": "Иван", "last_name": "Иванов" },
+          { "first_name": "Мария", "last_name": "Иванова" }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Коллеги",
+        "closed": true,
+        "members_count": 10,
+        "friends": [
+          { "first_name": "Александр", "last_name": "Петров" },
+          { "first_name": "Елена", "last_name": "Сидорова" }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Школьные друзья",
+        "closed": false,
+        "avatar_color": "#00FF00",
+        "members_count": 8,
+        "friends": [
+          { "first_name": "Дмитрий", "last_name": "Смирнов" },
+          { "first_name": "Ольга", "last_name": "Козлова" }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Спортивный клуб",
+        "closed": true,
+        "members_count": 15
+      },
+      {
+        "id": 5,
+        "name": "Книжный клуб",
+        "closed": false,
+        "avatar_color": "#0000FF",
+        "members_count": 12,
+        "friends": [
+          { "first_name": "Анна", "last_name": "Соколова" },
+          { "first_name": "Павел", "last_name": "Ковалев" }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Музыкальный ансамбль",
+        "closed": true,
+        "members_count": 6
+      },
+      {
+        "id": 7,
+        "name": "Творческий кружок",
+        "closed": false,
+        "avatar_color": "#FF00FF",
+        "members_count": 7,
+        "friends": [
+          { "first_name": "Екатерина", "last_name": "Игнатьева" },
+          { "first_name": "Артем", "last_name": "Соловьев" }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Байкеры",
+        "closed": false,
+        "avatar_color": "#FFFF00",
+        "members_count": 4,
+        "friends": [
+          { "first_name": "Наталья", "last_name": "Попова" },
+          { "first_name": "Игорь", "last_name": "Морозов" }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Путешественники",
+        "closed": true,
+        "members_count": 20
+      },
+      {
+        "id": 10,
+        "name": "Игровой клуб",
+        "closed": false,
+        "avatar_color": "#00FFFF",
+        "members_count": 9,
+        "friends": [
+          { "first_name": "Алексей", "last_name": "Семенов" },
+          { "first_name": "Маргарита", "last_name": "Кузнецова" }
+        ]
+      }
+    ]
+  }
+}
