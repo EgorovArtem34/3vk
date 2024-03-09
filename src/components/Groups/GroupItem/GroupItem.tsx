@@ -5,7 +5,7 @@ import { Friends } from "./Friends/Friends";
 
 export const GroupItem = ({ group }: { group: Group }) => {
   const { name, closed, avatar_color, members_count, friends } = group;
-
+  
   return (
     <div className={styles.group}>
       {avatar_color && <AvatarGroup bgColor={avatar_color} />}

@@ -4,6 +4,8 @@ import { fetchGroups } from "../model/slices/groupsSlice";
 import { GroupItem } from "../GroupItem/GroupItem";
 import styles from "./GroupList.module.scss";
 
+const delay = 1000;
+
 export const GroupList = () => {
   const dispatch = useAppDispatch();
   const {
@@ -13,7 +15,11 @@ export const GroupList = () => {
   } = useAppSelector((state) => state.groupSlice);
 
   useEffect(() => {
-    dispatch(fetchGroups());
+    const debouncedFetchGroups = setTimeout(() => {
+      dispatch(fetchGroups());
+    }, delay);
+
+    return () => clearTimeout(debouncedFetchGroups);
   }, [dispatch]);
 
   if (isFetchGroupsLoading) {

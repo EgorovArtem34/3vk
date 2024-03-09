@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { GetGroupsResponse, Group, GroupsState } from "../types";
+import { Group, GroupsState } from "../types";
 import { IError } from "@/store/types";
 
 export const fetchGroups = createAsyncThunk("groups/fetchGroups", async () => {
   try {
     const groups = await axios.get("http://localhost:3000/groupDB");
     const { data } = groups;
-
     if (
       data.result === 0 ||
       !Object.prototype.hasOwnProperty.call(data, "data")
