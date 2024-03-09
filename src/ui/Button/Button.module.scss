@@ -1,0 +1,15 @@
+.button {
+  cursor: pointer;
+
+  
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.clear {
+  border: none;
+  background: none;
+  outline: none;
+}

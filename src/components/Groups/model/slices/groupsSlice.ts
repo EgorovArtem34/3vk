@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { GetGroupsResponse, GroupsState } from "../types";
+import { GetGroupsResponse, Group, GroupsState } from "../types";
 import { IError } from "@/store/types";
 
 export const fetchGroups = createAsyncThunk("groups/fetchGroups", async () => {
@@ -14,7 +14,7 @@ export const fetchGroups = createAsyncThunk("groups/fetchGroups", async () => {
     ) {
       throw new Error("fetch error");
     }
-    return data;
+    return data.data;
   } catch (err) {
     const error = err as AxiosError<IError>;
     throw error.message;
@@ -47,9 +47,8 @@ const groupsSlice = createSlice({
       })
       .addCase(
         fetchGroups.fulfilled,
-        (state, { payload }: PayloadAction<GetGroupsResponse>) => {
-          const { data } = payload;
-          state.groups = data || [];
+        (state, { payload }: PayloadAction<Group[]>) => {
+          state.groups = payload;
           state.errors.fetchGroupsErr = null;
           state.isLoadings.isFetchGroupsLoading = false;
         }
