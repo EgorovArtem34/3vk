@@ -95,6 +95,18 @@
           { "first_name": "Алексей", "last_name": "Семенов" },
           { "first_name": "Маргарита", "last_name": "Кузнецова" }
         ]
+      },
+      {
+        "id": 11,
+        "name": "Игровой клуб 2",
+        "closed": true,
+        "avatar_color": "#000FFF",
+        "members_count": 9,
+        "friends": [
+          { "first_name": "Алексей", "last_name": "Семенов" },
+          { "first_name": "Маргарита", "last_name": "Кузнецова" },
+          { "first_name": "Игорь", "last_name": "Морозов" }
+        ]
       }
     ]
   }

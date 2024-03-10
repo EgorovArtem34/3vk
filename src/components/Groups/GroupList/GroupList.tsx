@@ -3,13 +3,12 @@ import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { fetchGroups } from "../model/slices/groupsSlice";
 import { GroupItem } from "../GroupItem/GroupItem";
 import styles from "./GroupList.module.scss";
-
-const delay = 1000;
+import { delay } from "../model/constants";
 
 export const GroupList = () => {
   const dispatch = useAppDispatch();
   const {
-    groups,
+    filteredGroups: currentGroups,
     isLoadings: { isFetchGroupsLoading },
     errors: { fetchGroupsErr },
   } = useAppSelector((state) => state.groupSlice);
@@ -22,16 +21,22 @@ export const GroupList = () => {
     return () => clearTimeout(debouncedFetchGroups);
   }, [dispatch]);
 
-  if (isFetchGroupsLoading) {
-    return <div className={styles.groups}>...Loading</div>;
+  if (isFetchGroupsLoading || fetchGroupsErr) {
+    return (
+      <div className={styles.groups}>
+        <p className="text-center">
+          {fetchGroupsErr ? `fetch error: ${fetchGroupsErr}` : "...Загрузка"}
+        </p>
+      </div>
+    );
   }
 
   return (
     <div className={styles.groups}>
-      {!fetchGroupsErr ? (
-        groups.map((group) => <GroupItem group={group} key={group.id} />)
+      {currentGroups.length > 0 ? (
+        currentGroups.map((group) => <GroupItem group={group} key={group.id} />)
       ) : (
-        <p>fetch error: {fetchGroupsErr}</p>
+        <p className="text-center">Групп нет</p>
       )}
     </div>
   );

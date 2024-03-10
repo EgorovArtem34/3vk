@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 import { Group, GroupsState } from "../types";
 import { IError } from "@/store/types";
+import { filterGroup } from "@/utils/filterGroup";
 
 export const fetchGroups = createAsyncThunk("groups/fetchGroups", async () => {
   try {
@@ -22,18 +23,44 @@ export const fetchGroups = createAsyncThunk("groups/fetchGroups", async () => {
 
 const initialState: GroupsState = {
   groups: [],
+  filteredGroups: [],
   errors: {
     fetchGroupsErr: null,
   },
   isLoadings: {
     isFetchGroupsLoading: false,
   },
+  filters: {
+    typePrivate: "all",
+    avatarColor: "all",
+    friendsFilter: "all",
+  },
 };
 
 const groupsSlice = createSlice({
   name: "groups",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilterTypePrivateGroup: (state, { payload }: PayloadAction<string>) => {
+      state.filters.typePrivate = payload;
+    },
+    setFilterAvatarColor: (state, { payload }: PayloadAction<string>) => {
+      state.filters.avatarColor = payload;
+    },
+    setFilterHasFriends: (state, { payload }: PayloadAction<string>) => {
+      state.filters.friendsFilter = payload;
+    },
+    makeFilterGroup: (state) => {
+      const currentFilteredGroups = filterGroup(state.groups, state.filters);
+      return {
+        ...state,
+        filteredGroups: currentFilteredGroups,
+      };
+    },
+    setIsFetchGroupsLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoadings.isFetchGroupsLoading = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchGroups.pending, (state) => {
@@ -48,6 +75,7 @@ const groupsSlice = createSlice({
         fetchGroups.fulfilled,
         (state, { payload }: PayloadAction<Group[]>) => {
           state.groups = payload;
+          state.filteredGroups = payload;
           state.errors.fetchGroupsErr = null;
           state.isLoadings.isFetchGroupsLoading = false;
         }
@@ -55,5 +83,11 @@ const groupsSlice = createSlice({
   },
 });
 
-// export const {} = groupsSlice.actions;
+export const {
+  setFilterTypePrivateGroup,
+  setFilterAvatarColor,
+  setFilterHasFriends,
+  makeFilterGroup,
+  setIsFetchGroupsLoading,
+} = groupsSlice.actions;
 export default groupsSlice.reducer;

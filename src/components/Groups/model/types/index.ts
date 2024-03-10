@@ -17,12 +17,20 @@ export interface GetGroupsResponse {
   data?: Group[];
 }
 
+export interface Filters {
+  typePrivate: string;
+  avatarColor: string;
+  friendsFilter: string;
+}
+
 export interface GroupsState {
   groups: Group[];
+  filteredGroups: Group[];
   errors: {
     fetchGroupsErr: null | string;
   };
   isLoadings: {
     isFetchGroupsLoading: boolean;
   };
+  filters: Filters;
 }
