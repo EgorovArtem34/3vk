@@ -7,7 +7,7 @@ import {
   setFilterHasFriends,
   makeFilterGroup,
 } from "../model/slices/groupsSlice";
-import { Group } from "../model/types";
+import { FriendsType, Group, PrivateType } from "../model/types";
 import styles from "./GroupFilters.module.scss";
 
 export type AvatarColors = { [key: string]: string };
@@ -22,15 +22,15 @@ export const GroupFilters = () => {
   const typePrivateGroupOptions = useMemo(
     () => [
       {
-        value: "all",
+        value: PrivateType.ALL,
         content: "Все",
       },
       {
-        value: "open",
+        value: PrivateType.OPEN,
         content: "Открытая",
       },
       {
-        value: "close",
+        value: PrivateType.CLOSE,
         content: "Закрытая",
       },
     ],
@@ -58,15 +58,15 @@ export const GroupFilters = () => {
   const friendsOptions = useMemo(
     () => [
       {
-        value: "all",
+        value: FriendsType.ALL,
         content: "Все",
       },
       {
-        value: "yes",
+        value: FriendsType.YES,
         content: "Есть",
       },
       {
-        value: "no",
+        value: FriendsType.NO,
         content: "Нет",
       },
     ],

@@ -34,3 +34,15 @@ export interface GroupsState {
   };
   filters: Filters;
 }
+
+export enum FriendsType {
+  ALL = "all",
+  YES = "yes",
+  NO = "no",
+}
+
+export enum PrivateType {
+  ALL = "all",
+  OPEN = "open",
+  CLOSE = "close",
+}

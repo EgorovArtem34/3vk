@@ -34,9 +34,14 @@ export const GroupList = () => {
   return (
     <div className={styles.groups}>
       {currentGroups.length > 0 ? (
-        currentGroups.map((group) => <GroupItem group={group} key={group.id} />)
+        <>
+          <h1 className={styles.title}>Список групп</h1>
+          {currentGroups.map((group) => (
+            <GroupItem group={group} key={group.id} />
+          ))}
+        </>
       ) : (
-        <p className="text-center">Групп нет</p>
+        <p className="text-center">Групп не найдено</p>
       )}
     </div>
   );

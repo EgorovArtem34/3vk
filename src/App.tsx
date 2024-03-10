@@ -1,10 +1,12 @@
-import { GroupsPage } from "@/pages/GroupsPage/GroupsPage";
-import "./styles/index.scss";
+import { Routes, Route } from "react-router-dom";
+import { GroupsPage, NotFoundPage } from "@/pages/index";
+import "@/styles/index.scss";
 
 export const App = () => {
   return (
-    <>
-      <GroupsPage />
-    </>
+    <Routes>
+      <Route path="/" element={<GroupsPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 };

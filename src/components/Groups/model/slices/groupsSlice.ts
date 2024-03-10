@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { Group, GroupsState } from "../types";
+import { FriendsType, Group, GroupsState, PrivateType } from "../types";
 import { IError } from "@/store/types";
 import { filterGroup } from "@/utils/filterGroup";
 
@@ -31,9 +31,9 @@ const initialState: GroupsState = {
     isFetchGroupsLoading: false,
   },
   filters: {
-    typePrivate: "all",
+    typePrivate: PrivateType.ALL,
     avatarColor: "all",
-    friendsFilter: "all",
+    friendsFilter: FriendsType.ALL,
   },
 };
 
